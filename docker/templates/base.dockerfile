@@ -18,10 +18,16 @@ RUN echo "deb ${DEBIAN_MIRROR}" > /etc/apt/sources.list \
        expat \
        perl \
        libsqlite3-0 \
+       build-essential \
+       libffi-dev \
+    && ARCH=$(dpkg --print-architecture) \
+    && if [ "$ARCH" = "amd64" ]; then \
+         apt-get install -y --no-install-recommends libssl-dev; \
+       fi \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-ARG PYTHON_PACKAGES="httpx==0.27.2 requests==2.32.3 jinja2==3.1.6 PySocks httpx[socks]"
+ARG PYTHON_PACKAGES="httpx==0.27.2 requests==2.32.3 jinja2==3.1.6 PySocks httpx[socks] crawl4ai"
 
-RUN pip3 install --no-cache-dir ${PYTHON_PACKAGES} 
+RUN pip3 install --no-cache-dir ${PYTHON_PACKAGES}
