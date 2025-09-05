@@ -17,7 +17,7 @@ concurrency:
 jobs:
   test:
     name: Test
-    runs-on: ${{ matrix.arch == 'amd64' && 'ubuntu-latest' || 'arm64_runner' }}
+    runs-on: ${{ matrix.arch == 'amd64' && 'ubuntu-latest' || 'ubuntu-24.04-arm' }}
     strategy:
       matrix:
         arch: [amd64, arm64]
