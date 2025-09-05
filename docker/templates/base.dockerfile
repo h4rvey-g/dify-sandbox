@@ -20,10 +20,7 @@ RUN echo "deb ${DEBIAN_MIRROR}" > /etc/apt/sources.list \
        libsqlite3-0 \
        build-essential \
        libffi-dev \
-    && ARCH=$(dpkg --print-architecture) \
-    && if [ "$ARCH" = "amd64" ]; then \
-         apt-get install -y --no-install-recommends libssl-dev; \
-       fi \
+    libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

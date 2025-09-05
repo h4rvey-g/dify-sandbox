@@ -21,6 +21,8 @@ RUN echo "deb ${DEBIAN_MIRROR}" > /etc/apt/sources.list \
        expat \
        perl \
        libsqlite3-0 \
+       build-essential \
+       libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
